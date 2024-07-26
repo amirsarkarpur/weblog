@@ -1,8 +1,14 @@
+/* styles.css */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
 }
 
 h1, h2 {
@@ -29,4 +35,17 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+
+img {
+    max-width: 60%;
+    height: auto;
+    display: block;
+    margin: 5px auto 5px auto;
+}
+
+.details-link {
+    display: inline-block;
+    margin-top: 5px;
+    color: #007BFF;
 }

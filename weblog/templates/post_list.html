@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>لیست پست‌ها</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'weblog/styles.css' %}">
 </head>
 <body>
     <div class="container">
@@ -13,11 +13,12 @@
         <ul class="post-list">
             {% for post in posts %}
             <li class="post-item">
+                <img src="{{ post.image.url }}" alt="{{ post.name }}">
                 <h2>{{ post.name }}</h2>
                 <p>{{ post.blog_text|truncatewords:30 }}</p>
                 <a href="{% url 'post_detail' post.id %}" class="details-link">جزئیات بیشتر</a>
             </li>
-            {% endfor %} 
+            {% endfor %}
         </ul>
     </div>
 </body>

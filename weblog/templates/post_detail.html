@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ post.name }}</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'weblog/styles.css' %}">
 </head>
 <body>
     <div class="container">
         <h1>{{ post.name }}</h1>
         <p>دسته‌بندی: {{ post.Category.name }}</p>
-        <img src="{{ post.image.url }}" alt="{{ post.name }}" class="post-image">
+        <img src="{{ post.image.url }}" alt="{{ post.name }}">
         <p>{{ post.blog_text }}</p>
         <p>نویسنده: {{ post.author.username }}</p>
         <p>تاریخ انتشار: {{ post.published_at }}</p>

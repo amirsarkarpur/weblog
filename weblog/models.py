@@ -15,7 +15,7 @@ class Post(models.Model):
     )
 
     name = models.CharField(default=" ",max_length=50,null=False,blank=False)
-    image = models.ImageField(null=False,blank=False)
+    image = models.ImageField(null=False,blank=False,upload_to='images/')
     blog_text = models.TextField(default=" ",max_length=100000,null=False,blank=False)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
     published_at = models.DateTimeField(auto_now_add=True,null=True, blank=True)
