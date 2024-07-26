@@ -13,8 +13,8 @@ This is a Django-based blog project that allows users to view and interact with 
 
 1. **Clone the repository**:
     ```bash
-    git clone https://github.com/yourusername/yourrepository.git
-    cd yourrepository
+    git clone https://github.com/amirsarkarpur/weblog.git
+    cd weblog
     ```
 
 2. **Install the dependencies**:
