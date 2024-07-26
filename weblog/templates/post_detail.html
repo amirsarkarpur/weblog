@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ post.name }}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>{{ post.name }}</h1>
+        <p>دسته‌بندی: {{ post.Category.name }}</p>
+        <img src="{{ post.image.url }}" alt="{{ post.name }}" class="post-image">
+        <p>{{ post.blog_text }}</p>
+        <p>نویسنده: {{ post.author.username }}</p>
+        <p>تاریخ انتشار: {{ post.published_at }}</p>
+        <p>تاریخ بروزرسانی: {{ post.updated_at }}</p>
+        <p>تعداد لایک‌ها: {{ like_count }}</p> 
+
+        <h2>نظرات</h2>
+        {% if comments %}
+            <ul class="comment-list">
+                {% for comment in comments %}
+                    <li class="comment-item">
+                        <h3>{{ comment.comment_name }}</h3>
+                        {% if comment.replay_comment %}
+                            <p>{{ comment.replay_comment }}</p>
+                        {% else %}
+                            <p></p>
+                        {% endif %}
+                        <p>{{ comment.Comment_text }}</p>
+                        <p>امتیاز: {{ comment.star }}</p>
+                        <p>نویسنده: {{ comment.author.username }}</p>
+                        <p>تاریخ ارسال: {{ comment.uplod_at }}</p>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>هنوز نظری وجود ندارد.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

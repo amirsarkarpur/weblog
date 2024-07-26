@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لیست دسته‌بندی</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>لیست دسته‌بندی</h1>
+        <ul class="category-list">
+            {% for categorys in category %}
+            <li class="category-item">
+                <h2>{{ categorys.name }}</h2>
+                <a href="{% url 'post_list' categorys.id %}" class="details-link">جزئیات بیشتر</a>
+            </li>
+            {% endfor %} 
+        </ul>
+    </div>
+</body>
+</html>
