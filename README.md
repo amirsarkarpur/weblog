@@ -21,7 +21,12 @@ This is a Django-based blog project that allows users to view and interact with 
     ```bash
     pip install -r requirements.txt
     ```
-
+    
+4. **Run makemigrations**:
+    ```bash
+    python manage.py makemigrations
+    ```
+    
 3. **Run migrations**:
     ```bash
     python manage.py migrate
