@@ -66,6 +66,3 @@ This is a Django-based blog project that allows users to view and interact with 
 - `path('llists/<int:category_id>/', views.post_list, name='post_list')`
 - `path('pin/', views.pin_list, name='pin_list')`
 
-## License
-
-This project is licensed under the MIT License.
