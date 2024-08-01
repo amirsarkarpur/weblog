@@ -1,3 +1,6 @@
+from django.shortcuts import render, redirect
+from .forms import AddPostForm
+from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from .models import Post,Comment,Category,pin
 
@@ -18,8 +21,16 @@ def post_detail(request, post_id):
     comments = Comment.objects.filter(post=post)
     like_count = post.like_count()
 
+    if request.method == 'POST':
+        formset = AddPostForm(request.POST)
+        if formset.is_valid():
+            formset.save()
+            return HttpResponse('blog post created')
+    else:
+        formset = AddPostForm()
+    
 
-    return render(request, 'post_detail.html', {'post': post , 'comments': comments , 'like_count': like_count})
+    return render(request, 'post_detail.html', {'post': post , 'comments': comments , 'like_count': like_count ,'form': formset })
 
 
 def user_pins(request):

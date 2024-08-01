@@ -61,6 +61,8 @@ class Comment (models.Model):
         ('5', ' 5'),
     ]
 
+    
+
     comment_name = models.CharField(default=" ",max_length=50,null=False,blank=False)
     post = models.ForeignKey('Post', null=False, blank=False, on_delete=models.CASCADE)
     author = models.ForeignKey(User, on_delete=models.CASCADE,blank=False)
