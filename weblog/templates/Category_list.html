@@ -8,16 +8,23 @@
     <link rel="stylesheet" href="{% static 'weblog/styles.css' %}">
 </head>
 <body>
+    <header>
+        <h1>وبلاگ</h1>
+        <nav>
+            <a href="{% url 'show_category' %}">خانه</a>
+        </nav>
+    </header>
     <div class="container">
-        <h1>لیست دسته‌بندی</h1>
+        <h2>لیست دسته‌بندی</h2>
         <ul class="category-list">
-            {% for categorys in category %}
+            {% for category in category %}
             <li class="category-item">
-                <h2>{{ categorys.name }}</h2>
-                <a href="{% url 'post_list' categorys.id %}" class="details-link">جزئیات بیشتر</a>
+                <h3>{{ category.name }}</h3>
+                <a href="{% url 'post_list' category.id %}" class="details-link">جزئیات بیشتر</a>
             </li>
-            {% endfor %} 
+            {% endfor %}
         </ul>
     </div>
+    <script src="{% static 'js/main.js' %}"></script>
 </body>
 </html>

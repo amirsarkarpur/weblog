@@ -8,44 +8,52 @@
     <link rel="stylesheet" href="{% static 'weblog/styles.css' %}">
 </head>
 <body>
+    <header>
+        <h1>وبلاگ</h1>
+        <nav>
+            <a href="{% url 'show_category' %}">خانه</a>
+            <a href="{% url 'post_list' post.Category.id %}">بازگشت به لیست پست‌ها</a>
+        </nav>
+    </header>
     <div class="container">
-        <h1>{{ post.name }}</h1>
+        <h2>{{ post.name }}</h2>
         <p>دسته‌بندی: {{ post.Category.name }}</p>
         <img src="{{ post.image.url }}" alt="{{ post.name }}">
         <p>{{ post.blog_text }}</p>
         <p>نویسنده: {{ post.author.username }}</p>
         <p>تاریخ انتشار: {{ post.published_at }}</p>
         <p>تاریخ بروزرسانی: {{ post.updated_at }}</p>
-        <p>تعداد لایک‌ها: {{ like_count }}</p> 
+        <p>تعداد لایک‌ها: {{ like_count }}</p>
 
-        <h2>نظرات</h2>
+        <h3>نظرات</h3>
         {% if comments %}
             <ul class="comment-list">
                 {% for comment in comments %}
-                    <li class="comment-item">
-                        <h3>{{ comment.comment_name }}</h3>
-                        {% if comment.replay_comment %}
-                            <p>{{ comment.replay_comment }}</p>
-                        {% else %}
-                            <p></p>
-                        {% endif %}
-                        <p>{{ comment.Comment_text }}</p>
-                        <p>امتیاز: {{ comment.star }}</p>
-                        <p>نویسنده: {{ comment.author.username }}</p>
-                        <p>تاریخ ارسال: {{ comment.uplod_at }}</p>
-                    </li>
+                <li class="comment-item">
+                    <h4>{{ comment.comment_name }}</h4>
+                    {% if comment.replay_comment %}
+                        <p>{{ comment.replay_comment }}</p>
+                    {% else %}
+                        <p>بدون پاسخ</p>
+                    {% endif %}
+                    <p>{{ comment.Comment_text }}</p>
+                    <p>امتیاز: {{ comment.star }}</p>
+                    <p>نویسنده: {{ comment.author.username }}</p>
+                    <p>تاریخ ارسال: {{ comment.uplod_at }}</p>
+                </li>
                 {% endfor %}
             </ul>
         {% else %}
             <p>هنوز نظری وجود ندارد.</p>
         {% endif %}
-    </div>
-    <h1>Create a New Post</h1> 
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Submit</button>
-    </form>
 
+        <h3>ایجاد پست جدید</h3>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">ارسال</button>
+        </form>
+    </div>
+    <script src="{% static 'js/main.js' %}"></script>
 </body>
 </html>

@@ -8,18 +8,25 @@
     <link rel="stylesheet" href="{% static 'weblog/styles.css' %}">
 </head>
 <body>
+    <header>
+        <h1>وبلاگ</h1>
+        <nav>
+            <a href="{% url 'show_category' %}">خانه</a>
+        </nav>
+    </header>
     <div class="container">
-        <h1>لیست پست‌ها</h1>
+        <h2>لیست پست‌ها</h2>
         <ul class="post-list">
             {% for post in posts %}
             <li class="post-item">
                 <img src="{{ post.image.url }}" alt="{{ post.name }}">
-                <h2>{{ post.name }}</h2>
+                <h3>{{ post.name }}</h3>
                 <p>{{ post.blog_text|truncatewords:30 }}</p>
                 <a href="{% url 'post_detail' post.id %}" class="details-link">جزئیات بیشتر</a>
             </li>
             {% endfor %}
         </ul>
     </div>
+    <script src="{% static 'js/main.js' %}"></script>
 </body>
 </html>
